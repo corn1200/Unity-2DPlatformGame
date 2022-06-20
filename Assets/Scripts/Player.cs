@@ -7,11 +7,13 @@ public class Player : MonoBehaviour
     public float maxSpeed;
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
+    Animator animator;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -27,6 +29,14 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Horizontal"))
         {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+        }
+
+        if(Mathf.Abs(rigid.velocity.x) < 0.3)
+        {
+            animator.SetBool("isWalking", false);
+        } else
+        {
+            animator.SetBool("isWalking", true);
         }
     }
 
