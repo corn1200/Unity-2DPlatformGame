@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
         if(Input.GetButtonDown("Jump"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            animator.SetBool("isJumping", true);
         }
 
         // Stop Speed
