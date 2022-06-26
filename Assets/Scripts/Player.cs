@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         // Jump
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             rigid.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
@@ -34,15 +34,16 @@ public class Player : MonoBehaviour
         }
 
         // Direction Sprite
-        if(Input.GetButtonDown("Horizontal"))
+        if (Input.GetButtonDown("Horizontal"))
         {
             spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
         }
 
-        if(Mathf.Abs(rigid.velocity.x) < 0.3)
+        if (Mathf.Abs(rigid.velocity.x) < 0.3)
         {
             animator.SetBool("isWalking", false);
-        } else
+        }
+        else
         {
             animator.SetBool("isWalking", true);
         }
@@ -62,6 +63,22 @@ public class Player : MonoBehaviour
         else if (rigid.velocity.x < maxSpeed * (-1))
         {
             rigid.velocity = new Vector2(maxSpeed * (-1), rigid.velocity.y);
+        }
+
+        // Landing Platform
+        if(rigid.velocity.y < 0)
+        {
+            Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
+
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, LayerMask.GetMask("Platform"));
+
+            if (rayHit.collider != null)
+            {
+                if (rayHit.distance < 0.5f)
+                {
+                    animator.SetBool("isJumping", false);
+                }
+            }
         }
     }
 }
