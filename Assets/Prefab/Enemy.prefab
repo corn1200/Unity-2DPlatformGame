@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 3696042102290344713}
   - component: {fileID: 3696042102290344712}
   - component: {fileID: 3696042102290344711}
-  - component: {fileID: 8928547698686344459}
+  - component: {fileID: 1542007226}
+  - component: {fileID: 1542007228}
+  - component: {fileID: 1542007227}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -102,7 +104,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
---- !u!95 &8928547698686344459
+--- !u!95 &1542007226
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -122,3 +124,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &1542007228
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696042102290344710}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1542007227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3696042102290344710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46643e9935f7fb4db227962777ecd44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
