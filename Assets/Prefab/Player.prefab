@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8197085091507264587}
   - component: {fileID: 1586627226926014248}
   - component: {fileID: 5108090153276689305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,3 +159,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 4.5
   jumpPower: 20
+  pushingForce: 7
