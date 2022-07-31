@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rigid;
     SpriteRenderer spriteRenderer;
     Animator animator;
+    public float pushingForce;
 
     private void Awake()
     {
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
         }
 
         // Landing Platform
-        if(rigid.velocity.y < 0)
+        if (rigid.velocity.y < 0)
         {
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0));
 
@@ -80,5 +81,32 @@ public class Player : MonoBehaviour
                 }
             }
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            OnDamaged(collision.transform.position);
+        }
+    }
+
+    void OnDamaged(Vector2 targetPos)
+    {
+        gameObject.layer = 8;
+
+        spriteRenderer.color = new Color(1, 1, 1, 0.4f);
+
+        int dirc = transform.position.x - targetPos.x > 0 ? 1 : -1;
+        rigid.AddForce(new Vector2(dirc, 1) * pushingForce, ForceMode2D.Impulse);
+
+        animator.SetTrigger("doDamaged");
+        Invoke("OffDamaged", 3);
+    }
+
+    void OffDamaged()
+    {
+        gameObject.layer = 7;
+        spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 }
